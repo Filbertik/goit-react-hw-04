@@ -1,30 +1,34 @@
-import { useState } from "react";
-import styles from "./SearchBar.module.css";
+import toast, { Toaster } from "react-hot-toast";
+import s from "./SearchBar.module.css";
+import { MdSearch } from "react-icons/md";
 
-const SearchBar = ({ onSearch }) => {
-  const [input, setInput] = useState("");
-
-  const handleSubmit = (e) => {
+const SearchBar = ({ handleQuery }) => {
+  const createQuery = (e) => {
     e.preventDefault();
-    if (input.trim() === "") return;
-    onSearch(input);
-    setInput("");
+    const newQuery = e.target.elements.query.value.trim().toLowerCase();
+    if (newQuery === "") return toast.error("Search cannot be empty");
+    const perPage = e.target.elements.per_page.value;
+    e.target.reset();
+    return handleQuery(newQuery, perPage);
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <input
-        type="text"
-        placeholder="Пошук зображень..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className={styles.input}
-      />
-      <button type="submit" className={styles.button}>
-        Search
-      </button>
-    </form>
+    <header className={s.header}>
+      <form onSubmit={createQuery} className={s.form}>
+        <input
+          className={s.inputText}
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images"
+          name="query"
+        />
+        <button type="submit">
+          <MdSearch className={s.btn} />
+        </button>
+      </form>
+      <Toaster position="top-right" reverseOrder={false} />
+    </header>
   );
 };
-
 export default SearchBar;
