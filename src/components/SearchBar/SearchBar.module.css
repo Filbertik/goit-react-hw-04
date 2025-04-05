@@ -68,3 +68,6 @@
     transform: scale(1.2);
   }
 }
+.inputNum {
+  display: none;
+}
