@@ -40,7 +40,7 @@
   top: 20px;
   left: 20px;
   &:hover .iconLikes {
-    fill: red;
+    fill: rgb(163, 114, 114);
   }
 }
 .description {
@@ -54,7 +54,7 @@
   top: 20px;
   right: 20px;
   &:hover .icon {
-    fill: red;
+    fill: rgb(133, 79, 79);
   }
 }
 .likes,
@@ -62,7 +62,7 @@
   display: flex;
   background-color: #ffffff60;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: background-color 300ms ease-in-out;
   &:hover {
     background-color: #fff;
@@ -72,9 +72,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  fill: #802a2a;
+  width: 20px;
+  height: 20px;
+  fill: #351385;
   transition: fill 300ms ease-in-out;
 }
 .iconLikes {
